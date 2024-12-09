@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.enaitzdam.appmvvmzero.databinding.FragmentHomeBinding
 
 
@@ -20,13 +19,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater)
 
-        binding.viewContainer.setOnClickListener {
-            viewModel.randomQuote()
-            binding.tvQuote.text = viewModel.frase
-            binding.tvAuthor.text = viewModel.autor
+        binding.searchButton.setOnClickListener {
+            viewModel.countedStudents(binding.editTextNumberSigned.text.toString().toInt())
+            binding.tvAuthor.text = viewModel.countedStudents(binding.editTextNumberSigned.text.toString().toInt()).toString()
         }
 
 
