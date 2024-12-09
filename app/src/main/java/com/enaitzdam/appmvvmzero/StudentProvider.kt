@@ -3,13 +3,9 @@ package com.enaitzdam.appmvvmzero
 class StudentProvider {
     companion object {
         fun countAgeStudents(age: Int): Int {
-            var count = 0
-            for (student in students) {
-                if (student.age == age) {
-                    count++
-                }
+            return students.count {
+                it.age == age
             }
-            return count
         }
 
         private val students = listOf(
